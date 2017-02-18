@@ -1,0 +1,49 @@
+$primary-color: #eee;
+$secondary-color:
+$font-stack: "Open Sans", sans-serif;
+
+#quiz { width: 550px; }
+.title { text-align: center; }
+.question { color: #0a4400; }
+#question-group {
+  padding: 20px;
+  margin: 20px;
+  background-color: #4a78ce;
+}
+#question {
+  padding: 10px;
+  margin: 10px;
+  background-color: #5691ff;
+}
+form.choices,
+form.choices input.choice {
+  font-size: 1.25em;
+  margin: 10px 5px;
+}
+form.choices span.choice {
+  padding-left: 5;
+}
+form.choices label {
+  display: block;
+  font-weight: normal;
+}
+.choice-group {
+  padding: 10px;
+  margin: 10px;
+  background-color: #5691ff;
+}
+button {
+  color: white;
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: none;
+  text-transform: uppercase;
+  background-color: #5691ff;
+}
+button:hover {
+  background-color: #f1f442;
+  color: black;
+}

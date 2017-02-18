@@ -1,0 +1,33 @@
+/*
+Error: Invalid CSS after "$font-stack": expected selector or at-rule, was ": "Open Sans", ..."
+        on line 3 of styles.scss
+
+1: $primary-color: #eee;
+2: $secondary-color:
+3: $font-stack: "Open Sans", sans-serif;
+4: 
+5: #quiz { width: 550px; }
+6: .title { text-align: center; }
+7: .question { color: #0a4400; }
+8: #question-group {
+
+Backtrace:
+styles.scss:3
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:42:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:391:in `run'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/bin/sass:13:in `<top (required)>'
+/usr/local/bin/sass:23:in `load'
+/usr/local/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"$font-stack\": expected selector or at-rule, was \": \"Open Sans\", ...\"\A         on line 3 of styles.scss\A \A 1: $primary-color: #eee;\A 2: $secondary-color:\A 3: $font-stack: \"Open Sans\", sans-serif;\A 4: \A 5: #quiz { width: 550px; }\A 6: .title { text-align: center; }\A 7: .question { color: #0a4400; }\A 8: #question-group {"; }

@@ -1,0 +1,75 @@
+<html>
+<head>
+<!--
+	Author: Philip Harrell
+	Description: Quiz
+-->
+	<title>Quiz</title>
+	<script type="text/javascript" src="../assets/js/jquery-3.1.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="../assets/js/underscore-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+	<style>
+		#quiz { width: 550px; }
+		.title { text-align: center; }
+		.question { color: #0a4400; }
+		#question-group {
+			padding: 20px;
+			margin: 20px;
+			background-color: #4a78ce;
+		}
+		#question {
+			padding: 10px;
+			margin: 10px;
+			background-color: #5691ff;
+		}
+		form.choices,
+		form.choices input.choice {
+			font-size: 1.25em;
+			margin: 10px 5px;
+		}
+		form.choices span.choice {
+			padding-left: 5;
+		}
+		form.choices label {
+			display: block;
+			font-weight: normal;
+		}
+		.choice-group {
+			padding: 10px;
+			margin: 10px;
+			background-color: #5691ff;
+		}
+		button {
+			color: white;
+			padding: 15px;
+			margin-left: 10px;
+			margin-right: 10px;
+			font-size: 1.5em;
+			font-weight: bold;
+			border: none;
+			text-transform: uppercase;
+			background-color: #5691ff;
+		}
+		button:hover {
+			background-color: #f1f442;
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container" id="quiz">
+		<h1 class="title">JavaScript Quiz</h1>
+		<div id="question-group">
+			<h2 class="question" id="question"></h2>
+			<div class="choice-group">
+				<form class="choices"></form>
+			</div>
+			<button id="next">Next</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="quiz.js"></script>
+</body>
+
+</html>

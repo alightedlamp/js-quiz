@@ -1,19 +1,34 @@
-$primary-color: #eee;
-$secondary-color:
-$font-stack: "Open Sans", sans-serif;
+$primary-color: #9b5d5d;
+$secondary-color: #ff4242;
+$font-stack: Raleway, sans-serif;
 
-#quiz { width: 550px; }
-.title { text-align: center; }
-.question { color: #0a4400; }
+body {
+  font-family: $font-stack;
+  background-color: $primary-color;
+}
+#quiz {
+  width: 550px;
+  padding: 25px 40px 40px 40px;
+  margin: 0 auto;
+  display: table;
+  margin-top: 8em;
+  border-radius: 3px;
+  background-color: white;
+}
+.title {
+  text-align: center;
+  color: $primary-color;
+ }
+.question {
+  text-align: center;
+  color: $secondary-color;
+}
 #question-group {
-  padding: 20px;
-  margin: 20px;
-  background-color: #4a78ce;
+  margin-bottom: 2em;
 }
 #question {
-  padding: 10px;
   margin: 10px;
-  background-color: #5691ff;
+  padding: 10px;
 }
 form.choices,
 form.choices input.choice {
@@ -21,29 +36,33 @@ form.choices input.choice {
   margin: 10px 5px;
 }
 form.choices span.choice {
-  padding-left: 5;
+  padding-left: 5px;
 }
 form.choices label {
   display: block;
   font-weight: normal;
 }
 .choice-group {
-  padding: 10px;
-  margin: 10px;
-  background-color: #5691ff;
+  clear: both;
 }
-button {
+div.buttons {
+  display: block;
+  margin: auto;
+}
+button.btn.btn-primary {
   color: white;
-  padding: 15px;
+  padding: .75em 1.25em;
   margin-left: 10px;
   margin-right: 10px;
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 1em;
+  font-weight: 200;
   border: none;
-  text-transform: uppercase;
-  background-color: #5691ff;
+  border-radius: 3px;
+  float: right;
+  background-color: $primary-color;
+  transition: background .25s;
+  -webkit-transition: background .25s; /* Safari */
 }
-button:hover {
-  background-color: #f1f442;
-  color: black;
+button.btn.btn-primary:hover {
+  background-color: $secondary-color;
 }

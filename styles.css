@@ -1,33 +1,66 @@
-/*
-Error: Invalid CSS after "$font-stack": expected selector or at-rule, was ": "Open Sans", ..."
-        on line 3 of styles.scss
+body {
+  font-family: Raleway, sans-serif;
+  background-color: #9b5d5d; }
 
-1: $primary-color: #eee;
-2: $secondary-color:
-3: $font-stack: "Open Sans", sans-serif;
-4: 
-5: #quiz { width: 550px; }
-6: .title { text-align: center; }
-7: .question { color: #0a4400; }
-8: #question-group {
+#quiz {
+  width: 550px;
+  padding: 25px 40px 40px 40px;
+  margin: 0 auto;
+  display: table;
+  margin-top: 8em;
+  border-radius: 3px;
+  background-color: white; }
 
-Backtrace:
-styles.scss:3
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:42:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:391:in `run'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"$font-stack\": expected selector or at-rule, was \": \"Open Sans\", ...\"\A         on line 3 of styles.scss\A \A 1: $primary-color: #eee;\A 2: $secondary-color:\A 3: $font-stack: \"Open Sans\", sans-serif;\A 4: \A 5: #quiz { width: 550px; }\A 6: .title { text-align: center; }\A 7: .question { color: #0a4400; }\A 8: #question-group {"; }
+.title {
+  text-align: center;
+  color: #9b5d5d; }
+
+.question {
+  text-align: center;
+  color: #ff4242; }
+
+#question-group {
+  margin-bottom: 2em; }
+
+#question {
+  margin: 10px;
+  padding: 10px; }
+
+form.choices,
+form.choices input.choice {
+  font-size: 1.25em;
+  margin: 10px 5px; }
+
+form.choices span.choice {
+  padding-left: 5px; }
+
+form.choices label {
+  display: block;
+  font-weight: normal; }
+
+.choice-group {
+  clear: both; }
+
+div.buttons {
+  display: block;
+  margin: auto; }
+
+button.btn.btn-primary {
+  color: white;
+  padding: .75em 1.25em;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+  font-weight: 200;
+  border: none;
+  border-radius: 3px;
+  float: right;
+  background-color: #9b5d5d;
+  transition: background .25s;
+  -webkit-transition: background .25s;
+  /* Safari */ }
+
+button.btn.btn-primary:hover {
+  background-color: #ff4242; }
+
+/*# sourceMappingURL=styles.css.map */

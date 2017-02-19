@@ -49,35 +49,32 @@ function Quiz(questions) {
   this.num = 0;
   this.score = 0;
 }
-Quiz.prototype.forEach = function(q, context) {
-
-};
 Quiz.prototype.startQuiz = function(game) {
-  var question = new Question(this.num);
-  game.showQuestion(question.getQuestion(this.num));
+  var currentQuestion = new Question(this.num);
+  game.showQuestion(currentQuestion.getQuestion(this.num));
 };
 Quiz.prototype.nextQuestion = function(choice) {
-  /* if (this.checkAnswer(choice, this.question.getQuestion(this.num))) {
+  var currentQuestion = new Question(this.num);
+  if (this.checkAnswer(choice, currentQuestion.getQuestion(this.num))) {
     quiz.score++;
-  } */
+  }
   if (this.num + 1 >= questions.length) {
     this.endQuiz(this.score);
   }
   else {
     this.num++;
+    var currentQuestion = new Question(this.num);
+    game.showQuestion(currentQuestion.getQuestion(this.num));
   }
-  var question = new Question(this.num);
-  game.showQuestion(question.getQuestion(this.num));
 };
 Quiz.prototype.checkAnswer = function(choice, currentQuestion) {
   this.currentQuestion = currentQuestion;
   this.choice = choice;
-  return currentQuestion.correctAnswer === choice;
+  return currentQuestion.correctAnswer == choice;
 };
 Quiz.prototype.endQuiz = function(score) {
   this.score = score;
-  // this needs to move down to view
-  $("#question").text("You scored " + score + " points!");
+  game.resetQuiz(this.score);
 };
 
 
@@ -89,10 +86,14 @@ function Game(quiz) {
 }
 $("#next").click(function() {
   var choice = $(".choices input[name=choice]:checked").val()
+  if (choice == undefined) {
+    $("#question-group").effect("shake");
+    return;
+  }
   quiz.nextQuestion(choice);
 });
 $("#reset").click(function() {
-  this.resetQuiz();
+
 });
 Game.prototype.showQuestion = function(currentQuestion) {
   this.currentQuestion = currentQuestion;
@@ -104,9 +105,18 @@ Game.prototype.showQuestion = function(currentQuestion) {
   }
   $(".choices").html(radios);
 }
-Game.prototype.resetQuiz = function() {
-
+Game.prototype.resetQuiz = function(score) {
+  this.score = score;
+  $("#score").text("You scored " + this.score + " points!");
+  $("#question").text("Game over!");
+  
+  $(".choice-group").empty();
+  $("#next").toggleClass("hide");
+  $("#reset").toggleClass("hide");
 };
+Game.prototype.newGame = function() {
+
+}
 
 var game = new Game();
 var quiz = new Quiz(questions);

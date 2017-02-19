@@ -2,14 +2,17 @@ body {
   font-family: Raleway, sans-serif;
   background-color: #9b5d5d; }
 
+h2, h3 {
+  text-align: center; }
+
 #quiz {
   width: 550px;
-  padding: 25px 40px 40px 40px;
   margin: 0 auto;
   display: table;
   margin-top: 8em;
   border-radius: 3px;
-  background-color: white; }
+  background-color: white;
+  padding: 25px 40px 40px 40px; }
 
 .title {
   text-align: center;
@@ -46,21 +49,23 @@ div.buttons {
   margin: auto; }
 
 button.btn.btn-primary {
+  float: right;
+  border: none;
   color: white;
-  padding: .75em 1.25em;
-  margin-left: 10px;
-  margin-right: 10px;
   font-size: 1em;
   font-weight: 200;
-  border: none;
   border-radius: 3px;
-  float: right;
-  background-color: #9b5d5d;
+  padding: .75em 1.25em;
+  margin: 20px 10px 0 10px;
   transition: background .25s;
+  background-color: #9b5d5d;
   -webkit-transition: background .25s;
   /* Safari */ }
 
 button.btn.btn-primary:hover {
   background-color: #ff4242; }
+
+.hide {
+  display: none; }
 
 /*# sourceMappingURL=styles.css.map */

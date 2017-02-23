@@ -1,31 +1,35 @@
-/*
-  This version of the quiz utilizes prototype programming
-  based on Eloquent JavaScript's World Project
-
-  here is a completed example: https://bl.ocks.org/shiftyp/0e2516f91a044acfb396
-*/
-
-var questions = [{
+var questions = [
+  {
     question: "Where am I from?",
     choices: ["Dallas", "Austin", "Boston", "New York"],
     correctAnswer: 0
-  }, {
+  },
+  {
     question: "When was I born?",
     choices: ["1998", "1979", "2005", "1988"],
     correctAnswer: 3
-  }, {
+  },
+  {
     question: "What is my favorite band?",
     choices: ["Modest Mouse", "Squarepusher", "Aphex Twin", "Green Day"],
     correctAnswer: 1
-  }, {
+  },
+  {
     question: "Who is the best kitty?",
-    choices: ["Gus", "Rocky", "Fatty", "Chester"],
+    choices: ["Gus", "Rocky", "Phatty", "Chester"],
     correctAnswer: 0
-  }, {
+  },
+  {
     question: "What is 548 + 23?",
     choices: ["265", "565", "571", "575"],
     correctAnswer: 2
-  }];
+  },
+  {
+    question: "How may house plants should one have per room?",
+    choices: ["1", "5", "8", "6"],
+    correctAnswer: 3
+  }
+];
 
 
 /* MODEL
@@ -46,10 +50,11 @@ Question.prototype.getQuestion = function(num) {
 */
 function Quiz(questions) {
   this.questions = questions;
-  this.num = 0;
-  this.score = 0;
 }
 Quiz.prototype.startQuiz = function(game) {
+  this.num = 0;
+  this.score = 0;
+
   var currentQuestion = new Question(this.num);
   game.showQuestion(currentQuestion.getQuestion(this.num));
 };
@@ -80,6 +85,8 @@ Quiz.prototype.endQuiz = function(score) {
 
 /* VIEW
   - displays data to user and handles click events
+
+  - click events probably need to be moved within game object
 */
 function Game(quiz) {
   this.quiz = quiz;
@@ -93,7 +100,11 @@ $("#next").click(function() {
   quiz.nextQuestion(choice);
 });
 $("#reset").click(function() {
+  $("#next").toggleClass("hide");
+  $("#reset").toggleClass("hide");
 
+  $("#score").empty();
+  game.newGame();
 });
 Game.prototype.showQuestion = function(currentQuestion) {
   this.currentQuestion = currentQuestion;
@@ -104,20 +115,23 @@ Game.prototype.showQuestion = function(currentQuestion) {
     radios += "<label><input type='radio' class='choice' name='choice' value='" + i + "'>" + this.currentQuestion.choices[i] + "</label>";
   }
   $(".choices").html(radios);
-}
+};
 Game.prototype.resetQuiz = function(score) {
   this.score = score;
+
   $("#score").text("You scored " + this.score + " points!");
   $("#question").text("Game over!");
-  
-  $(".choice-group").empty();
+
+  $(".choices").empty();
   $("#next").toggleClass("hide");
   $("#reset").toggleClass("hide");
 };
 Game.prototype.newGame = function() {
+  this.quiz = new Quiz(questions);
+  game = new Game(this.quiz);
+  quiz.startQuiz(game);
+};
 
-}
-
-var game = new Game();
 var quiz = new Quiz(questions);
+var game = new Game(quiz);
 quiz.startQuiz(game);

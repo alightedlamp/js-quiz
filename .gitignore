@@ -1,2 +1,7 @@
+//~archive
+//~archive/*
+/css/.sass-cache
+/css/.sass-cache/*
+/css/styles.css.map
+.DS_Store
 todo.txt
-/~assets

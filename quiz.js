@@ -1,3 +1,4 @@
+"use strict"
 var questions = [
   {
     question: "Where am I from?",
@@ -23,11 +24,6 @@ var questions = [
     question: "What is 548 + 23?",
     choices: ["265", "565", "571", "575"],
     correctAnswer: 2
-  },
-  {
-    question: "How may house plants should one have per room?",
-    choices: ["1", "5", "8", "6"],
-    correctAnswer: 3
   }
 ];
 
@@ -50,6 +46,8 @@ Question.prototype.getQuestion = function(num) {
 */
 function Quiz(questions) {
   this.questions = questions;
+
+  this.userAnswers = [];
 }
 Quiz.prototype.startQuiz = function(game) {
   this.num = 0;
@@ -75,18 +73,36 @@ Quiz.prototype.nextQuestion = function(choice) {
 Quiz.prototype.checkAnswer = function(choice, currentQuestion) {
   this.currentQuestion = currentQuestion;
   this.choice = choice;
+  this.userAnswers.push(this.choice);
   return currentQuestion.correctAnswer == choice;
+};
+Quiz.prototype.showAnswers = function() {
+  var answers = "The correct answers are: ";
+
+  this.questions.forEach(function(question, index) {
+    // if the correct answer doesn't match the user's answer, change styling
+    if (question.correctAnswer !== this.userAnswers[index]) { // broken
+      answers += "<b class='red'>" + question.choices[question.correctAnswer] + "</b>";
+    }
+    else {
+      answers += question.choices[question.correctAnswer];
+    }
+    // if it's the last question, don't add a comma to the string
+    if (questions.indexOf(question) < questions.length) {
+      answers += ", ";
+    }
+  });
+  return answers;
 };
 Quiz.prototype.endQuiz = function(score) {
   this.score = score;
-  game.resetQuiz(this.score);
+  // this.answers = this.showAnswers();
+  game.resetQuiz(this.score, this.answers);
 };
 
 
 /* VIEW
   - displays data to user and handles click events
-
-  - click events probably need to be moved within game object
 */
 function Game(quiz) {
   this.quiz = quiz;
@@ -106,6 +122,9 @@ $("#reset").click(function() {
   $("#score").empty();
   game.newGame();
 });
+$("#show-answers").click(function() {
+  $(this).parent().toggleClass("hide");
+});
 Game.prototype.showQuestion = function(currentQuestion) {
   this.currentQuestion = currentQuestion;
   var radios = "";
@@ -116,11 +135,12 @@ Game.prototype.showQuestion = function(currentQuestion) {
   }
   $(".choices").html(radios);
 };
-Game.prototype.resetQuiz = function(score) {
+Game.prototype.resetQuiz = function(score, answers) {
   this.score = score;
 
-  $("#score").text("You scored " + this.score + " points!");
   $("#question").text("Game over!");
+  $("#score").text("You scored " + this.score + " points!");
+  // $("#answers").text(answers);
 
   $(".choices").empty();
   $("#next").toggleClass("hide");

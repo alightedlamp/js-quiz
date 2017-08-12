@@ -27,7 +27,7 @@ var questions = [
   },
   {
     question: "Who designed Fallingwater?",
-    choices: ["Brenden Eich", "Frank Lloyd Wright", "Taylor Swift", "Bob Barker"],
+    choices: ["Brendan Eich", "Frank Lloyd Wright", "Taylor Swift", "Bob Barker"],
     correctAnswer: 1
   }
 ];

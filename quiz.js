@@ -24,6 +24,11 @@ var questions = [
     question: "What is 548 + 23?",
     choices: ["265", "565", "571", "575"],
     correctAnswer: 2
+  },
+  {
+    question: "Who designed Fallingwater?",
+    choices: ["Brenden Eich", "Frank Lloyd Wright", "Taylor Swift", "Bob Barker"],
+    correctAnswer: 1
   }
 ];
 
@@ -62,7 +67,7 @@ Quiz.prototype.nextQuestion = function(choice) {
     quiz.score++;
   }
   if (this.num + 1 >= questions.length) {
-    this.endQuiz(this.score);
+    this.endQuiz(this.score, this.userAnswers);
   }
   else {
     this.num++;
@@ -76,27 +81,32 @@ Quiz.prototype.checkAnswer = function(choice, currentQuestion) {
   this.userAnswers.push(this.choice);
   return currentQuestion.correctAnswer == choice;
 };
-Quiz.prototype.showAnswers = function() {
-  var answers = "The correct answers are: ";
+Quiz.prototype.showAnswers = function(userAnswers) {
+  var answers = "Answers (incorrect in red): ";
+  var userAnswers = this.userAnswers;
 
   this.questions.forEach(function(question, index) {
     // if the correct answer doesn't match the user's answer, change styling
-    if (question.correctAnswer !== this.userAnswers[index]) { // broken
+    if (question.correctAnswer != userAnswers[index]) {
       answers += "<b class='red'>" + question.choices[question.correctAnswer] + "</b>";
     }
     else {
       answers += question.choices[question.correctAnswer];
     }
     // if it's the last question, don't add a comma to the string
-    if (questions.indexOf(question) < questions.length) {
+    if (index < questions.length - 1) {
       answers += ", ";
+    }
+    else {
+      answers += ".";
     }
   });
   return answers;
 };
-Quiz.prototype.endQuiz = function(score) {
+Quiz.prototype.endQuiz = function(score, userAnswers) {
   this.score = score;
-  // this.answers = this.showAnswers();
+  this.userAnswers = userAnswers;
+  this.answers = this.showAnswers(this.userAnswers);
   game.resetQuiz(this.score, this.answers);
 };
 
@@ -118,6 +128,7 @@ $("#next").click(function() {
 $("#reset").click(function() {
   $("#next").toggleClass("hide");
   $("#reset").toggleClass("hide");
+  $("#answers").empty();
 
   $("#score").empty();
   game.newGame();
@@ -140,7 +151,7 @@ Game.prototype.resetQuiz = function(score, answers) {
 
   $("#question").text("Game over!");
   $("#score").text("You scored " + this.score + " points!");
-  // $("#answers").text(answers);
+  $("#answers").html(answers).toggleClass("hide");
 
   $(".choices").empty();
   $("#next").toggleClass("hide");

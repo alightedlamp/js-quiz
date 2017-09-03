@@ -82,23 +82,20 @@ Quiz.prototype.checkAnswer = function(choice, currentQuestion) {
   return currentQuestion.correctAnswer == choice;
 };
 Quiz.prototype.showAnswers = function(userAnswers) {
-  var answers = "Answers (incorrect in red): ";
+  var answers = "<h3>Answers (incorrect in red): </h3><ol>";
   var userAnswers = this.userAnswers;
 
   this.questions.forEach(function(question, index) {
     // if the correct answer doesn't match the user's answer, change styling
     if (question.correctAnswer != userAnswers[index]) {
-      answers += "<b class='red'>" + question.choices[question.correctAnswer] + "</b>";
+      answers += "<li><p>" + question.question + "</p><p><b class='red'>" + question.choices[question.correctAnswer] + "</b></p></li>";
     }
     else {
-      answers += question.choices[question.correctAnswer];
+      answers += "<li><p>" + question.question + "</p><p>" + question.choices[question.correctAnswer] + "</p></li>";
     }
     // if it's the last question, don't add a comma to the string
-    if (index < questions.length - 1) {
-      answers += ", ";
-    }
-    else {
-      answers += ".";
+    if (index === questions.length - 1) {
+      answers += "</ol>";
     }
   });
   return answers;

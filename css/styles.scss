@@ -1,47 +1,63 @@
-$primary-color: #9b5d5d;
-$secondary-color: #ff4242;
-$font-stack: Raleway, sans-serif;
+$primary-color: #ffdf44;
+$secondary-color: #afafaf;
+$font-stack: Roboto, sans-serif;
+$javascript-yellow: #f7df1e;
 
 body {
   font-family: $font-stack;
   background-color: $primary-color;
+  font-weight: 100;
+}
+p {
+  margin: 10px 0;
 }
 h2, h3 {
-  text-align: center;
+  text-align: left;
+  margin: 0;
 }
 #quiz {
   width: 550px;
   margin: 0 auto;
   display: table;
   margin-top: 8em;
-  border-radius: 3px;
+  // border-radius: 3px;
   background-color: white;
-  padding: 25px 40px 40px 40px;
+  padding: 3em 2em;
 }
 .title {
   text-align: center;
   color: $primary-color;
  }
 .question {
-  text-align: center;
+  font-size: 1.4em;
   color: $secondary-color;
 }
 #question-group {
+  margin-top: 2em;
+  padding: 10px;
   margin-bottom: 2em;
 }
-#question {
-  margin: 10px;
-  padding: 10px;
+#answers {
+  margin-top: 2em;
 }
-form.choices,
-form.choices input.choice {
+#answers ol {
+  padding: 0 0 0 1em
+}
+#answers ol li {
+  margin-top: 1.5em;
+}
+form.choices {
   font-size: 1.25em;
-  margin: 10px 5px;
+  margin: 20px 15px 0 0;
+}
+form.choices input.choice {
+  margin-right: 1.25em;
 }
 form.choices span.choice {
   padding-left: 5px;
 }
 form.choices label {
+  margin-top: .75em;
   display: block;
   font-weight: normal;
 }
@@ -58,7 +74,7 @@ button.btn.btn-primary {
   color: white;
   font-size: 1em;
   font-weight: 200;
-  border-radius: 3px;
+  // border-radius: 3px;
   padding: .75em 1.25em;
   margin: 20px 10px 0 10px;
   transition: background .25s;
